@@ -53,7 +53,7 @@ $('#player1SignInButton').click(function() {
     document.querySelector('#player1EnterNameButton').style.display = 'none'
     document.querySelector('#player2EnterNameButton').style.display = 'none'
     $('#make').css("visibility", "visible")
-    $('#gameText').text('Get ready to rumble')
+    $('#gameText').text('Make a selection')
 
 
 })
@@ -229,12 +229,14 @@ database.ref().on("value", function(snapshot) {
             console.log('player1 wins')
             player1Wins++
             $("#player1Wins").text(player1Wins)
-            $('#make').text('Player 1 Wins')
+            let player1Name = $('#player1Title').text()
+            $('#make').text(player1Name +' Wins')
         } else {
             console.log('player2 wins')
             player2Wins++
             $('#player2Wins').text(player2Wins)
-            $('#make').text('Player 2 Wins')
+            let player2Name = $('#player2Title').text()
+            $('#make').text(player2Name +' Wins')
         }
         $('#gameText').text('Make a selection')
     }    
