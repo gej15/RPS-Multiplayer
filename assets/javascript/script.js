@@ -52,8 +52,8 @@ $('#player1SignInButton').click(function() {
     document.querySelector('#player1Scissors').style.display = 'inline'
     document.querySelector('#player1EnterNameButton').style.display = 'none'
     document.querySelector('#player2EnterNameButton').style.display = 'none'
-    document.querySelector('#make').style.visability = 'visable'
-    $('#gameText').text('Make a selection')
+    $('#make').css("visibility", "visible")
+    $('#gameText').text('Get ready to rumble')
 
 
 })
@@ -67,12 +67,13 @@ $('#player2SignInButton').click(function() {
         name: player2Name,
         symbolSelect: symbol,
       })
-      $('#gameText').text('Make a selection')
       document.querySelector('#player2Rock').style.display = 'inline'
       document.querySelector('#player2Paper').style.display = 'inline'
       document.querySelector('#player2Scissors').style.display = 'inline'
     document.querySelector('#player2EnterNameButton').style.display = 'none'
     document.querySelector('#player1EnterNameButton').style.display = 'none'
+    $('#gameText').text('Make a selection')
+    $('#make').css("visibility", "visible")
 })
 
 
@@ -120,6 +121,7 @@ $('.player1Symbols').on('click', function(){
     player1Name = $('#player1Title').text()
     console.log(player1Name)
     console.log(symbol)
+    // $('#make').css("visibility", "hidden")
     database.ref('player1').update({
         symbolSelect: symbol,
       })
@@ -128,6 +130,7 @@ $('.player1Symbols').on('click', function(){
 $('.player2Symbols').on('click', function(){
     let symbol = $(this).attr('value')
     player2Name = $('#player2Title').text()
+    // $('#make').css("visibility", "hidden")
     console.log(player2Name)
     console.log(symbol)
     database.ref('player2').update({
@@ -220,19 +223,20 @@ database.ref().on("value", function(snapshot) {
             console.log("it's a tie")
             ties++
             $('#ties').text(ties)
-            $('#gameText').text('It was a Tie')
+            $('#make').text('It was a Tie')
 
         } else if (result === 1) {
             console.log('player1 wins')
             player1Wins++
             $("#player1Wins").text(player1Wins)
-            $('#gameText').text('Player 1 Wins')
+            $('#make').text('Player 1 Wins')
         } else {
             console.log('player2 wins')
             player2Wins++
             $('#player2Wins').text(player2Wins)
-            $('#gameText').text('Player 2 Wins')
+            $('#make').text('Player 2 Wins')
         }
+        $('#gameText').text('Make a selection')
     }    
     })
 
