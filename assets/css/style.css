@@ -1,0 +1,33 @@
+body {
+    background: url(../images/background.jpg);
+    background-color: rgb(248, 246, 246);
+    background-blend-mode: soft-light;
+}
+
+
+.player1Symbols{
+    display: none;
+    height: 75px;
+    width: 75px;
+}
+
+.player2Symbols{
+    display: none;
+    height: 75px;
+    width: 75px;
+}
+
+#messages {
+    height: 250px;
+    overflow: auto;
+}
+
+#make {
+    visibility: hidden;
+}
+
+.playerBox {
+    height: 175px;
+    width: 245px;
+    text-align: center;
+}

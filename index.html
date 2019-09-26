@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+  <body class='container'>
+      <h1 class='row justify-content-center p-5'>Lets play Rock Paper Sissors</h1>
+        
+        <div class='row justify-content-between'>
+            <div class='justify-content-center border playerBox'>
+                <h2 class='text-center' id=player1Title>Player 1</h2>
+                <div id=player1></div>
+                <button type="button" class="btn btn-secondary btn-sm"  id=player1EnterNameButton data-toggle="modal" data-target="#player1Modal">
+                        Enter Name
+                </button> 
+                <img class=player1Symbols id=player1Rock src='assets/images/rock.png' value="r">
+                <img class=player1Symbols id=player1Paper src='assets/images/paper.png' value="p">
+                <img class=player1Symbols id=player1Scissors src='assets/images/scissors.png' value="s">
+            </div>
+
+            <div class="flex-column border">
+              <h4 class='text-center row-2' id=gameText>Enter your name </h4>
+              <h5 class='text-center' id=make>Make a selection</h5>
+              <p class='text-center'>Player 1 wins: <span id=player1Wins></span></p>
+              <p class='text-center'>Player 2 wins: <span id=player2Wins></span></p>
+              <p class='text-center'>Ties: <span id=ties></span></p>
+            </div>
+
+            <div class='center-text border playerBox'>
+                <h2 class='text-center' id=player2Title>Player 2</h2>
+                <div id=player2></div>
+                  <button type="button" class="btn btn-secondary btn-sm center-text"  id=player2EnterNameButton data-toggle="modal" data-target="#player2Modal">
+                          Enter Name
+                  </button>
+                <img class=player2Symbols id=player2Rock src='assets/images/rock.png' value="r">
+                <img class=player2Symbols id=player2Paper src='assets/images/paper.png' value="p">
+                <img class=player2Symbols id=player2Scissors src='assets/images/scissors.png' value="s">
+            </div>
+        </div>
+
+       
+
+
+
+       <!-- Player one modal -->
+       <div class="modal fade" id="player1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Welcome Player 1! Enter Your Name.</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input class="form-control" id="player1Name" placeholder="Lauren/Grant"></input>
+                        </div>
+                        <button type="button" id=player1SignInButton class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+      <!-- Player two modal -->
+      <div class="modal fade" id="player2Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Welcome Player 2! Enter Your Name.</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input class="form-control" id="player2Name" placeholder="Lauren/Grant"></input>
+                        </div>
+                        <button type="button" id=player2SignInButton class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+      <h5>Messages</h5>
+      <div id=messages class='border p-3' type=''></div>
+
+      <form>
+        <div class="form-group">
+            <label for="smackTalk">Enter smack talk here.</label>
+            <input class="form-control" id="smackTalk" type="text"></input>
+        </div>
+        <button type="submit" id=submitButton class="btn btn-primary">Submit</button>
+      </form>
+      
+    <!-- Optional JavaScript -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="assets/javascript/script.js"></script>
+</body>
+</html>
