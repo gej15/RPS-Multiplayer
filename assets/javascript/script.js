@@ -21,7 +21,8 @@ let player1Wins = 0
 let player2Wins = 0
 let ties = 0
 let thisPlayer = ""
-let inputAndName = ""
+let inputAndName = " "
+let number = 0
 
 database.ref('player1').set({
     name: player1Name,
@@ -34,7 +35,8 @@ database.ref('player2').set({
     })
 
 database.ref('messages').set({
-    inputAndName
+    inputAndName,
+    number,
 })
 
 $('#player1SignInButton').click(function() {
@@ -244,13 +246,26 @@ database.ref().on("value", function(snapshot) {
 
     $('#submitButton').on('click', function(e){
         e.preventDefault()
+        console.log(number)
+         database.ref('messages').on("value", function(snapshot) {
+          number = snapshot.val().number
+         })
+        number++
+        console.log(number)
+
         let input = $('#smackTalk').val().trim()
-        let inputAndName = thisPlayer + ": " + input + '\n'
+        
+        let inputAndName1 = thisPlayer + ": " + input 
+        //console.log(inputAndName1.slice(0, -1))
+        
+        
+        let inputAndName = inputAndName1
         console.log(inputAndName) 
-       
         database.ref('messages').update({
-            inputAndName
+            inputAndName,
+            number,
           })
+  
     })
 
     database.ref('messages').on("value", function(snapshot) {
@@ -264,4 +279,3 @@ database.ref().on("value", function(snapshot) {
 
 
 }) //document.ready
-//((snapshot.val().player1.symbolSelect ===  'r' && 'p' && 's'  ) && (snapshot.val().player2.symbolSelect === 'r' && 'p' && 's'))
